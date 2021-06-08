@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,36 +13,44 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <VBox prefHeight="400.0" prefWidth="285.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="50.0" prefWidth="285.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Season" />
-                        <Label prefHeight="32.0" prefWidth="63.0" text="Activities" />
-                     </children>
-                  </VBox>
-                  <ComboBox prefWidth="150.0" promptText="Sommer" />
-               </children>
-            </HBox>
-            <ListView prefHeight="338.0" prefWidth="285.0" />
-         </children>
-      </VBox>
-   </left>
-   <right>
-      <TableView prefHeight="371.0" prefWidth="311.0" BorderPane.alignment="CENTER" />
-   </right>
-   <top>
-      <Label text="Activities" textFill="#e11421" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <effect>
-            <Bloom />
-         </effect>
-      </Label>
-   </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <left>
+        <VBox prefHeight="400.0" prefWidth="285.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="50.0" prefWidth="285.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Label text="Season" />
+                                <Label prefHeight="32.0" prefWidth="63.0" text="Activities" />
+                            </children>
+                        </VBox>
+                        <ComboBox fx:id="cbSeason" prefWidth="150.0" />
+                    </children>
+                </HBox>
+                <ListView fx:id="lvActivities" prefHeight="338.0" prefWidth="285.0" />
+            </children>
+        </VBox>
+    </left>
+    <right>
+        <TableView fx:id="tvPerson" prefHeight="371.0" prefWidth="311.0" BorderPane.alignment="CENTER">
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Delete" onAction="#onDeleteClicked"/>
+                  <MenuItem mnemonicParsing="false" text="New" onAction="#onNewClicked"/>
+              </items>
+            </ContextMenu>
+         </contextMenu></TableView>
+    </right>
+    <top>
+        <Label text="Activities" textFill="#e11421" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="36.0" />
+            </font>
+            <effect>
+                <Bloom />
+            </effect>
+        </Label>
+    </top>
 </BorderPane>
